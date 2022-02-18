@@ -14,13 +14,13 @@ class EmailAddress extends ValueObject<String> {
   const EmailAddress._(this.value);
 }
 
-class PasswordAddress extends ValueObject<String> {
+class Password extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  factory PasswordAddress(String input) {
-    return PasswordAddress._(validatePassword(input));
+  factory Password(String input) {
+    return Password._(validatePassword(input));
   }
 
-  const PasswordAddress._(this.value);
+  const Password._(this.value);
 }
