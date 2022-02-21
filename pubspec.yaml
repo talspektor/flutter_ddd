@@ -18,6 +18,8 @@ dependencies:
   firebase_core:
   firebase_auth:
   google_sign_in:
+  injectable:
+  get_it:
 
   cupertino_icons: ^1.0.2
 
@@ -26,6 +28,7 @@ dev_dependencies:
     sdk: flutter
   freezed:
   build_runner:
+  injectable_generator:
 
   flutter_lints: ^1.0.0
 

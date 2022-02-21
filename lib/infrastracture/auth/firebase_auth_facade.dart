@@ -10,7 +10,10 @@ class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
 
-  FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn);
+  FirebaseAuthFacade(
+    this._firebaseAuth,
+    this._googleSignIn,
+  );
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
