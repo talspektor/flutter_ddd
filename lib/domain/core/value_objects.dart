@@ -1,12 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ddd/core/failures.dart';
+import 'package:flutter_ddd/domain/core/failures.dart';
 import 'package:flutter_ddd/domain/core/errors.dart';
 
 @immutable
 abstract class ValueObject<T> {
   const ValueObject();
   Either<ValueFailure<T>, T> get value;
+
+  bool isValid() => value.isRight();
 
   /// Throws [UnexpectedValueError] containing [ValueFailure]
   T getOrCrash() {

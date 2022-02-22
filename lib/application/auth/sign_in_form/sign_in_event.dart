@@ -5,7 +5,7 @@ part 'sign_in_event.freezed.dart';
 @freezed
 abstract class SingInFormEvent with _$SingInFormEvent {
   const factory SingInFormEvent.emailChanged(String emailStr) = EmailChanged;
-  const factory SingInFormEvent.passwordChanged(String emailStr) =
+  const factory SingInFormEvent.passwordChanged(String passwordStr) =
       PasswordChaned;
   const factory SingInFormEvent.registerWithEmailAndPasswordPressed() =
       RegisterWithEmailAndPasswordPressed;

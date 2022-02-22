@@ -1,4 +1,4 @@
-import 'package:flutter_ddd/core/failures.dart';
+import 'package:flutter_ddd/domain/core/failures.dart';
 
 class UnexpectedValueError extends Error {
   final ValueFailure valueFailure;
