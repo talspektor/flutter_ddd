@@ -4,8 +4,10 @@ import 'package:flutter_ddd/application/auth/sign_in_form/sign_in_event.dart';
 import 'package:flutter_ddd/domain/auth/auth_failure.dart';
 import 'package:flutter_ddd/domain/auth/i_auth_facade.dart';
 import 'package:flutter_ddd/domain/auth/value_objects.dart';
+import 'package:injectable/injectable.dart';
 import 'sign_in_state.dart';
 
+@injectable
 class SignInBloc extends Bloc<SingInFormEvent, SignInFormState> {
   final IAuthFacade _authFacade;
 
