@@ -1,4 +1,4 @@
-import 'package:flushbar/flushbar_helper.dart';
+// import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ddd/application/auth/sign_in_form/sign_in_bloc.dart';
@@ -15,15 +15,28 @@ class SignInForm extends StatelessWidget {
         state.authFailureOrSuccessOption.fold(
           () {},
           (either) => either.fold((failure) {
-            FlushbarHelper.createError(
-              message: failure.map(
-                cancelledByUser: (_) => 'Cancelled By User',
-                serverError: (_) => 'Server Error',
-                emailAlreadyInUse: (_) => 'Email Already In Use',
-                invalidEmailAndPasswordCombination: (_) =>
-                    'Invalid Email And Password Combination',
-              ),
-            ).show(context);
+            String text = '';
+            failure.map(
+              cancelledByUser: (_) {
+                text = 'Cancelled By User';
+              },
+              serverError: (_) => 'Server Error',
+              emailAlreadyInUse: (_) => text = 'Email Already In Use',
+              invalidEmailAndPasswordCombination: (_) =>
+                  text = 'Invalid Email And Password Combination',
+            );
+            Scaffold.of(context).showSnackBar(SnackBar(
+              content: Text(text),
+            ));
+            // FlushbarHelper.createError(
+            //   message: failure.map(
+            //     cancelledByUser: (_) => 'Cancelled By User',
+            //     serverError: (_) => 'Server Error',
+            //     emailAlreadyInUse: (_) => 'Email Already In Use',
+            //     invalidEmailAndPasswordCombination: (_) =>
+            //         'Invalid Email And Password Combination',
+            //   ),
+            // ).show(context);
           }, (_) {
             // TODO: Navigate
           }),
@@ -43,6 +56,7 @@ class SignInForm extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               TextFormField(
+                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email),
                   labelText: 'Email',
