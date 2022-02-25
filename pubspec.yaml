@@ -20,6 +20,7 @@ dependencies:
   google_sign_in:
   injectable:
   get_it:
+  flushbar:
 
   cupertino_icons: ^1.0.2
 
