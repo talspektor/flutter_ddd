@@ -4,7 +4,7 @@ import 'package:flutter_ddd/presentation/splash/splash_page.dart';
 
 @MaterialAutoRouter(
   routes: <AutoRoute>[
-    MaterialRoute(page: SignInPage, initial: false),
+    MaterialRoute(page: SignInPage),
     MaterialRoute(page: SplashPage, initial: true),
   ],
 )

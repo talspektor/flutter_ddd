@@ -10,7 +10,7 @@ import 'package:injectable/injectable.dart';
 
 import 'firebase_auth_mapper.dart';
 
-@lazySingleton
+@LazySingleton(as: IAuthFacade)
 @Injectable(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
