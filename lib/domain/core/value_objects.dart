@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ddd/domain/core/failures.dart';
 import 'package:flutter_ddd/domain/core/errors.dart';
+import 'package:flutter_ddd/domain/core/failures.dart';
 import 'package:uuid/uuid.dart';
 
 @immutable
@@ -14,6 +14,13 @@ abstract class ValueObject<T> {
   /// Throws [UnexpectedValueError] containing [ValueFailure]
   T getOrCrash() {
     return value.fold((failure) => throw UnexpectedValueError(failure), id);
+  }
+
+  Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
+    return value.fold(
+      (l) => left(l),
+      (r) => right(unit),
+    );
   }
 
   @override
