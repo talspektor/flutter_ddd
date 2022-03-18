@@ -25,9 +25,18 @@ abstract class Note implements _$Note {
         color: NoteColor(NoteColor.predefinedColors.first),
         todos: List3(emptyList()),
       );
+
   Option<ValueFailure<dynamic>> get failureOption {
     return body.failureOrUnit
         .andThen(todos.failureOrUnit)
+        .andThen(
+          todos
+              .getOrCrash()
+              .map((todoItem) => todoItem.failureOption)
+              .filter((o) => o.isSome())
+              .getOrElse(0, (_) => none())
+              .fold(() => right(unit), (f) => left(f)),
+        )
         .fold((f) => some(f), (_) => none());
   }
 }
